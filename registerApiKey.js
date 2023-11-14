@@ -23,7 +23,7 @@ function signMessage(privateKey, message) {
 
 // Função para realizar o login
 async function loginUser(email, password) {
-    const endpoint = 'https://api.brla.digital:4567/v1/business/login';
+    const endpoint = 'https://api.brla.digital:5567/v1/business/login';
     const body = { email, password };
   
     try {
@@ -43,7 +43,7 @@ async function registerApiKey(name, privateKeyPath, publicKeyPath) {
 
   const timestamp = Date.now().toString();
   const httpMethod = 'POST';
-  const endpoint = 'https://api.brla.digital:4567/v1/business/api-keys';
+  const endpoint = 'https://api.brla.digital:5567/v1/business/api-keys';
   
   const message = name;
 

@@ -22,22 +22,19 @@ function signMessage(privateKey, message) {
 
 
 
-// Função para registrar o webhook
-async function registerWebhook(link) {
+async function generateBrCode(amount, referenceLabel) {
 const timestamp = Date.now().toString();
-const httpMethod='POST'
-const endpoint = '/v1/business/webhooks';
+const httpMethod='GET'
+const endpoint = `/v1/business/pay-in/br-code?amount=${amount}&referenceLabel=${referenceLabel}`;
 const privateKey = readPrivateKey('private_key.pem');
-const body = {
-    url:link
-  };
-const message = timestamp + httpMethod + endpoint + JSON.stringify(body);
+
+const message = timestamp + httpMethod + endpoint;
 const Signature = signMessage(privateKey, message);  
 
 
   try {
 
-    const response = await axios.post('https://api.brla.digital:5567'+endpoint, body, {
+    const response = await axios.get('https://api.brla.digital:5567'+endpoint, {
       headers: {
         'X-API-Timestamp': timestamp,
         'X-API-Key': 'your_api_key',
@@ -53,4 +50,4 @@ const Signature = signMessage(privateKey, message);
   }
 }
 
-registerWebhook('https://0e8b-201-6-247-11.ngrok-free.app');
+generateBrCode(0, 'example');
