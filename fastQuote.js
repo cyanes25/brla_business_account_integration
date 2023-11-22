@@ -36,7 +36,7 @@ const Signature = signMessage(privateKey, message);
     const response = await axios.get('https://api.brla.digital:5567'+endpoint, {
       headers: {
         'X-API-Timestamp': timestamp,
-        'X-API-Key': '7b599d18-1794-44e4-b7f5-77a7fb9a4677',
+        'X-API-Key': 'your_api_key',
         'X-API-Signature': Signature,
       },
     });
