@@ -17,7 +17,7 @@ async function loginUser(email, password) {
   }
 
 async function fastQuote(amount, inputCoin, outputCoin ) {
-    await loginUser("cyanes@brla.digital", "Poliuyt16@")    
+    await loginUser("your_email", "your_password")    
 const endpoint = `/v1/business/fast-quote?operation=swap&amount=${amount}&chain=Polygon&inputCoin=${inputCoin}&outputCoin=${outputCoin}`;
 
 
