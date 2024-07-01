@@ -23,7 +23,7 @@ function signMessage(privateKey, message) {
 
 // Função para realizar o login
 async function loginUser(email, password) {
-    const endpoint = 'https://api.brla.digital:5567/v1/business/login';
+    const endpoint = 'https://api.brla.digital:4567/v1/business/login';
     const body = { email, password };
   
     try {
@@ -43,17 +43,17 @@ async function registerApiKey(name, privateKeyPath, publicKeyPath) {
 
   const timestamp = Date.now().toString();
   const httpMethod = 'POST';
-  const endpoint = 'https://api.brla.digital:5567/v1/business/api-keys';
+  const endpoint = 'https://api.brla.digital:4567/v1/business/api-keys';
   
   const message = name;
 
   // Gerando a assinatura
   const signature = signMessage(privateKey, message);
   globalSignature = signMessage(privateKey, message);
-
+console.log("globalSignature: ", globalSignature)
   console.log('Generated Signature:', signature); 
 
-  await loginUser("your_email", "your_password")
+  await loginUser("cyanes@brla.digital", "Poliuyt12@")
 
   const body = {
     name,
@@ -73,7 +73,7 @@ async function registerApiKey(name, privateKeyPath, publicKeyPath) {
   } catch (error) {
     console.error('Error registering API Key:', error.response.data || error.message);
     console.log(body)
-  }
+   }
 }
 
 // Substitua 'nomeDaChave' pelos valores reais
