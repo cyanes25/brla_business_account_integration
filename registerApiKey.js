@@ -53,7 +53,7 @@ async function registerApiKey(name, privateKeyPath, publicKeyPath) {
 console.log("globalSignature: ", globalSignature)
   console.log('Generated Signature:', signature); 
 
-  await loginUser("cyanes@brla.digital", "Poliuyt12@")
+  await loginUser("your_email", "your_password")
 
   const body = {
     name,
