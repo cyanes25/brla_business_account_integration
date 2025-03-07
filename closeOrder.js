@@ -33,9 +33,9 @@ async function fastQuote(amount, inputCoin, outputCoin ) {
   }
 }
 
-async function closeDeal(token) {
+async function closeDeal(token, markupAddress, receiverAddress) {
   const endpoint = `/v1/business/pay-in/pix-to-usd`;
-  const body = { token };
+  const body = { token, markupAddress, receiverAddress };
 
   try {
     const response = await axios.post('https://api.brla.digital:5567' + endpoint, body, {
@@ -54,7 +54,8 @@ async function closeDeal(token) {
 (async function main() {
   const quoteResponse = await fastQuote(100, 'BRLA', 'USDC');
   if (quoteResponse && quoteResponse.token) {
-    const closeResponse = await closeDeal(quoteResponse.token);
+    const externalWallet='0x907972d06bCa1CE2563338212aBA911045B5Bd8D'
+    const closeResponse = await closeDeal(quoteResponse.token, externalWallet, externalWallet);
     console.log("quoteResponse: ", quoteResponse);
     console.log("closeResponse: ", closeResponse);
   }
